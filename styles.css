@@ -1,0 +1,185 @@
+/* ProLane holding page — prolane.nz / prolane.co.nz
+   Palette: ProLane kit v2 (tsnz-app-hub/branding/source/prolane-kit-v2).
+   Focus ring: TSNZ apps design system (two-layer halo, never brand-hued).
+   No JavaScript on this page; theme follows the OS. */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/inter.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light dark;
+
+  --bg:            #F5F7F9;
+  --ink:           #0F1563;   /* ProLane navy */
+  --ink-2:         #3F4560;
+  --muted:         #5B6178;
+  --line:          #DFE5EC;
+  --action:        #0F1563;
+  --action-hover:  #1B237A;
+  --action-press:  #080E5B;
+  --on-action:     #FFFFFF;
+  --outline:       #7183AC;   /* steel blue — secondary button border */
+  --link:          #0F1563;
+  --focus:         #5475F5;
+  --halo:          #F5F7F9;
+
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:            #080E5B;   /* ProLane deep navy */
+    --ink:           #FFFFFF;
+    --ink-2:         #D5D9EA;
+    --muted:         #B0B7D1;   /* pale blue */
+    --line:          #262D78;
+    --action:        #FFFFFF;
+    --action-hover:  #E6E9F5;
+    --action-press:  #CDD2EA;
+    --on-action:     #0F1563;
+    --outline:       #7183AC;
+    --link:          #FFFFFF;
+    --focus:         #8FB6DE;
+    --halo:          #080E5B;
+
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--ink-2);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+}
+
+.logo { margin: 0 0 48px; }
+.logo img { display: block; width: 240px; height: auto; }
+
+h1 {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.lede {
+  margin: 0 0 32px;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--ink-2);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 32px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 120ms cubic-bezier(0.2, 0, 0, 1),
+              border-color 120ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+.btn-primary { background: var(--action); color: var(--on-action); }
+.btn-primary:hover  { background: var(--action-hover); }
+.btn-primary:active { background: var(--action-press); }
+
+.btn-secondary { background: transparent; color: var(--ink); border-color: var(--outline); }
+.btn-secondary:hover  { border-color: var(--ink); }
+.btn-secondary:active { background: var(--line); }
+
+.contact {
+  margin: 0;
+  padding: 24px 0 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+.contact h2 {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.contact dl { margin: 0; display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; }
+.contact dt { color: var(--muted); }
+.contact dd { margin: 0; color: var(--ink-2); }
+a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+a:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--halo), 0 0 0 5px var(--focus);
+  border-radius: 8px;
+}
+
+footer {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px 32px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+footer p { margin: 0; }
+
+@media (min-width: 720px) {
+  main { padding-top: 96px; }
+  .logo img { width: 280px; }
+  h1 { font-size: 40px; line-height: 48px; }
+}
+
+@media (max-width: 400px) {
+  .btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition-duration: 1ms; }
+}
+
+@media (forced-colors: active) {
+  .btn { border: 1px solid ButtonText; }
+}
